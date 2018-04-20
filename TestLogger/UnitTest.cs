@@ -14,8 +14,8 @@ namespace TestLogger
             StringWriter writer = new StringWriter();
             Console.SetOut(writer);
             
-            Log.Debug("Hi");
-            Assert.Equal(writer.ToString(), "|D|Hi\r\n");
+            Log.Debug("Hi", LogEnumTest.D);
+            Assert.Equal("[D] Hi\r\n", writer.ToString());
         }
         
         [Fact]
@@ -24,8 +24,8 @@ namespace TestLogger
             StringWriter writer = new StringWriter();
             Console.SetOut(writer);
             
-            Log.Warning("Hi");
-            Assert.Equal(writer.ToString(), "|W|Hi\r\n");
+            Log.Warning("Hi", LogEnumTest.W);
+            Assert.Equal("[W] Hi\r\n", writer.ToString());
         }
         
         [Fact]
@@ -34,8 +34,8 @@ namespace TestLogger
             StringWriter writer = new StringWriter();
             Console.SetOut(writer);
             
-            Log.Error("Hi");
-            Assert.Equal(writer.ToString(), "|E|Hi\r\n");
+            Log.Error("Hi", LogEnumTest.E);
+            Assert.Equal("[E] Hi\r\n", writer.ToString());
         }
 
         [Fact]
@@ -45,12 +45,20 @@ namespace TestLogger
             Console.SetOut(writer);
             
             Log.Logger.RemoveWriter(Log.Logger.DefaultWriter);
-            Log.Debug("Hi");
-            Assert.Equal(writer.ToString(), "");
+            Log.Debug("Hi", LogEnumTest.D);
+            Assert.Equal("", writer.ToString());
             
             Log.Logger.AddWriter(Log.Logger.DefaultWriter);
-            Log.Debug("Hi");
-            Assert.Equal(writer.ToString(), "|D|Hi\r\n");            
+            Log.Debug("Hi", LogEnumTest.D);
+            Assert.Equal("[D] Hi\r\n", writer.ToString());            
+        }
+
+        enum LogEnumTest
+        {
+            None,
+            D,
+            W,
+            E
         }
     }
 }

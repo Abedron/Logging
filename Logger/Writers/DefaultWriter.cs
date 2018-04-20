@@ -10,17 +10,17 @@ namespace Logging.Writers
 
         public override void Debug<S>(S message)
         {
-            Console.WriteLine("|D|" + message);
+            Console.WriteLine(message);
         }
 
         public override void Warning<S>(S message)
         {
-            Console.WriteLine("|W|" + message);
+            Console.WriteLine(message);
         }
 
         public override void Error<S>(S message)
         {
-            Console.WriteLine("|E|" + message);
+            Console.WriteLine(message);
         }
     }
 }
