@@ -1,0 +1,3 @@
+Debug: Hello World!
+Warning: Hello Mars!
+Error: Hello Europe!
